@@ -1,12 +1,14 @@
 ### Tools for linear regression ###
 # Jiahao
+
 import numpy as np
 import pandas as pd
 from sklearn.linear_model import LinearRegression
 import statsmodels.api as sm
 
 
-def simulate_data():
+
+def simulate_data(beta,n):
     """
     Simulates data for testing linear_regression models.
     INPUT
@@ -14,10 +16,21 @@ def simulate_data():
     RETURNS
         data (dict) contains X, y, and beta vectors.
     """
-    pass
+    x = np.random.randn(1,n)
+
+    epsilon = np.random.randn(1,n)
+
+    a = beta[0]
+    b = beta[1]
+
+    y = a + b*x + epsilon 
+
+    output = {'x':list(x[0]),'y':list(y[0]),'beta':beta}
+
+    return output
 
 
-def compare_models():
+def compare_models(x,y):
     """
     Compares output from different implementations of OLS.
     INPUT
@@ -26,10 +39,10 @@ def compare_models():
     RETURNS
         results (pandas.DataFrame) of estimated beta coefficients
     """
-    pass
+    results = sm.OLS(y,x).fit()
+    return pd.DataFrame(results.params)
 
-
-def load_hospital_data():
+def load_hospital_data(path_to_data):
     """
     Loads the hospital charges data set found at data.gov.
     INPUT
@@ -37,10 +50,13 @@ def load_hospital_data():
     RETURNS
         clean_df (pandas.DataFrame) containing the cleaned and formatted dataset for regression
     """
+    data = pd.read_csv(path_to_data)
+    return data
+
     pass
 
 
-def prepare_data():
+def prepare_data(hospi_data):
     """
     Prepares hospital data for regression (basically turns df into X and y).
     INPUT
@@ -48,6 +64,8 @@ def prepare_data():
     RETURNS
         data (dict) containing X design matrix and y response variable
     """
+    
+
     pass
 
 
@@ -64,4 +82,4 @@ def run_hospital_regression():
 
 ### END ###
 
-# You are just a fukcing clown
+
