@@ -64,6 +64,4 @@ def run_hospital_regression():
 
 ### END ###
 
-#aaa
-#bbb
-#ccc
+#I am not a clown
