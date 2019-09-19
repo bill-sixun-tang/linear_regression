@@ -1,5 +1,5 @@
 # Runs a linear regression on the hospital charge dataset
-
+# test merge
 import linear_regression as lr
 
 path_to_data = './hospital_charge_sample.csv'
